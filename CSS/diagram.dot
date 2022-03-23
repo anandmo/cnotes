@@ -1,0 +1,11 @@
+graph "graph A"
+{
+    label="\G"
+    subgraph "cluster A"
+    {
+        subgraph "cluster B"
+        {
+            c[shape=box];
+        }
+    }
+}
