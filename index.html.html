@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>codingproblems</title>
+	<title>Index of Notes</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -42,9 +42,9 @@
 <div class='header'>
 	[ <span class='insen'>Prev</span> ]
 
-	[ <a href='./index.html.html'>Index</a> ]
+	[ <a href='#index.html'>Index</a> ]
 
-	[ <a href='./CSS.html'>Next</a> ]
+	[ <span class='insen'>Next</span> ]
 </div>
 
 <hr />
@@ -53,177 +53,29 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>codingproblems <a name='codingproblems'></a></h1>
+	<h1>Index of Notes <a name='index.html'></a></h1>
 	</div>
 
 	<div class='content'>
-	<p>
-Created Sunday 20 March 2022
-</p>
-
-<p>
-How to read code ?<br>
+	<ul>
+<li><a href="./codingproblems.html" title="codingproblems" class="page">codingproblems</a></li>
+<li><a href="./CSS.html" title="CSS" class="page">CSS</a></li>
+<li><a href="./git.html" title="git" class="page">git</a></li>
+<li><a href="./java.html" title="java" class="page">java</a>
 <ul>
-<li>Find one thing you know the code does, and trace those actions backward</li>
-<li>Repeat that process multiple times, and you’ll rapidly increase your understanding of more and more pieces of the overall codebase.</li>
-<li>Exposure to read code  </li>
+<li><a href="./java/collection.html" title="collection" class="page">collection</a></li>
+<li><a href="./java/generics.html" title="generics" class="page">generics</a></li>
+<li><a href="./java/HashMap.html" title="HashMap" class="page">HashMap</a></li>
+<li><a href="./java/multithreading.html" title="multithreading" class="page">multithreading</a></li>
+<li><a href="./java/polymorphism.html" title="polymorphism" class="page">polymorphism</a></li>
 </ul>
-</p>
-
-<p>
-How visualize algorithms ?<br>
-<ul>
-<li><a href="https://visualgo.net/en" title="https://visualgo.net/en" class="https">https://visualgo.net/en</a> </li>
-<li>Mindmap algorithm</li>
+</li>
+<li><a href="./javaquestions.html" title="javaquestions" class="page">javaquestions</a></li>
+<li><a href="./junit.html" title="junit" class="page">junit</a></li>
+<li><a href="./maven.html" title="maven" class="page">maven</a></li>
+<li><a href="./thymeleaf.html" title="thymeleaf" class="page">thymeleaf</a></li>
+<li><a href="./WebConfig.java.html" title="WebConfig.java" class="page">WebConfig.java</a></li>
 </ul>
-</p>
-
-<p>
-<b>memoization</b> : In computing, memoization or memoisation is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. 
-</p>
-
-<p>
-<b>Quadratic growth : </b>In mathematics, a function or sequence is said to exhibit quadratic growth when its values are proportional to the square of the function argument or sequence position. 
-</p>
-
-<p>
-<b>Integer.MAX_VALUE and Integer.MIN_VALUE</b>  in java : Instead of initializing the variables with arbitrary values (for example int smallest = 0 , largest = 9999) it is safer to initialize the variables with the largest and smallest values representable by that number type (that is int smallest = Integer.MAX_VALUE, largest = Integer.MIN_VALUE). Since  integer array cannot contain a value larger than Integer.MAX_VALUE and smaller than Integer.MIN_VALUE  code works across all edge cases.
-</p>
-
-<p>
-<b>Big-O functions</b> used while analyzing algorithms.
-</p>
-
-<p>
-<div style='padding-left: 30pt'>
-O(1) - constant time<br>
-O(log(n)) - logarithmic time<br>
-O((log(n))c) - polylogarithmic time<br>
-O(n) - linear time<br>
-O(n^2) - quadratic time<br>
-O(n^c) - polynomial time<br>
-O(c^n) - exponential time<br>
-O(n!) - factorial time
-</div>
-</p>
-
-<p>
-(n = size of input, c = some constant)
-</p>
-
-
-<hr>
-
-<br>
-<br>
-
-<p>
-<b>Find the maximum sum of a continuous subsequence in an array of integers.</b>
-</p>
-
-<p>
-e.g:
-</p>
-
-<p>
-input: 1,-3,2,5,-8
-</p>
-
-<p>
-output: 7
-</p>
-
-<p>
-_______________
-</p>
-
-<p>
-SOLUTION:
-</p>
-
-<div class="zim-object">
-<pre><code class="java">
-public static int maxSubSequence(int[] arr) {
-
-	if (arr == null || arr.length == 0) {
-
-		return Integer.MIN_VALUE;
-
-	}
-
-
-
-	int maxSoFar = arr[0], curMax = arr[0];
-
-	for (int i = 1; i &lt; arr.length; i++) {
-
-		curMax = Math.max(curMax + arr[i], arr[i]);
-
-		maxSoFar = Math.max(curMax, maxSoFar);
-
-	}
-
-
-
-	return maxSoFar;
-
-}
-
-</code></pre>
-</div>
-
-<br>
-
-<p>
-RUNNING TIME COMPLEXITY:
-</p>
-
-<p>
-O(N)
-</p>
-
-<p>
-SPACE COMPLEXITY:
-</p>
-
-<p>
-O(1)
-</p>
-
-<p>
-Explanation
-</p>
-
-<p>
-A more optimal solution to this problem is known as Kadane’s Algorithm.  The concept works off of the simple idea that at each position in the array if we know what the previous maximum subarray sum is, we can deduce that the new max must be either the previous max or the previous max + the number in our current position.  For example, if our previous max is 4 and our current number is -1, the new max remains 4.  If the previous max is 4 but our current number is 2, then the max is reassigned to be 6.  We track this as local_max = max(local_max, local_max + num).
-</p>
-
-<p>
-This is an easy way of knowing at any point in time, what the current streak is that we are on, but it does not capture the greatest subarray.  For that purpose, we have a second variable global_max.  After each reassessment of local_max, we check if the newly assigned local_max is greater than our global_max.  If it is, we reassign our global_max.  This is tracked as global_max = max(local_max, global_max).
-</p>
-
-<p>
-Once we iterate over the entire array, our output will be whatever global_max is set to.  This algorithm produces a time complexity of O(n).
-</p>
-
-
-<hr>
-
-<br>
-
-<p>
-Recursion describes a situation where a function, once called, is called again before the first call completes and returns.<br>
-<b>Recursive</b> functions use something called “the call stack.”
-</p>
-
-<p>
-2 main types of recursion<br>
-Direct recursion happens when a function calls it-self within it-self before the function returns or end.<br>
-Indirect recursion (or mutual recursion) occurs when a function calls another function, eventually resulting in the original function being called again.
-</p>
-
-<br>
-
 
 	</div>
 
