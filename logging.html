@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>codingproblems</title>
+	<title>logging</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -40,11 +40,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <span class='insen'>Prev</span> ]
+	[ <a href='./junit.html'>Prev</a> ]
 
 	[ <a href='./index.html'>Index</a> ]
 
-	[ <a href='./CSS.html'>Next</a> ]
+	[ <a href='./maven.html'>Next</a> ]
 </div>
 
 <hr />
@@ -53,176 +53,134 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>codingproblems <a name='codingproblems'></a></h1>
+	<h1>logging <a name='logging'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Sunday 20 March 2022
+Created Thursday 24 March 2022
 </p>
 
 <p>
-How to read code ?<br>
-<ul>
-<li>Find one thing you know the code does, and trace those actions backward</li>
-<li>Repeat that process multiple times, and you’ll rapidly increase your understanding of more and more pieces of the overall codebase.</li>
-<li>Exposure to read code  </li>
-</ul>
+logging helps to see the behaviour of code both during development of the code and after the software has been shiped<br>
+using logging api we can filter the logs, which is not the case if we just print the statements on console 
 </p>
 
 <p>
-How visualize algorithms ?<br>
-<ul>
-<li><a href="https://visualgo.net/en" title="https://visualgo.net/en" class="https">https://visualgo.net/en</a> </li>
-<li>Mindmap algorithm</li>
-</ul>
+<b>SLF4J</b> - The Simple Logging Facade for Java (SLF4J) serves as a simple facade or abstraction for various logging frameworks (e.g. java.util.logging, logback, log4j) allowing the end user to plug in the desired logging framework at deployment time.<br>
+Note : It is not itself a logging library, but a generic interface to one of many logging libraries
 </p>
 
 <p>
-<b>memoization</b> : In computing, memoization or memoisation is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. 
+So with SLF4J as a facade, we can use either log4j or logback or &lt;any other compatible logging framework&gt;.
 </p>
 
 <p>
-<b>Quadratic growth : </b>In mathematics, a function or sequence is said to exhibit quadratic growth when its values are proportional to the square of the function argument or sequence position. 
+<b>logback</b> - it is logging framework based on slf4j. has three main components : loggers (for capturing logs), appenders (sending or printing logs to various destination) and layout (for formating the logs)<br>
+logback uses filters<br>
+logging behaviour can be configured at run time using a configuration file<br>
+supports xml and groovy based configuration
 </p>
 
 <p>
-<b>Integer.MAX_VALUE and Integer.MIN_VALUE</b>  in java : Instead of initializing the variables with arbitrary values (for example int smallest = 0 , largest = 9999) it is safer to initialize the variables with the largest and smallest values representable by that number type (that is int smallest = Integer.MAX_VALUE, largest = Integer.MIN_VALUE). Since  integer array cannot contain a value larger than Integer.MAX_VALUE and smaller than Integer.MIN_VALUE  code works across all edge cases.
+to add logback to a maven project go to <a href="https://mvnrepository.com/" title="https://mvnrepository.com/" class="https">https://mvnrepository.com/</a> <br>
+search for logback-classic module<br>
+choose version Logback Classic Module » 1.2.3<br>
+copy the dependency written in xml<br>
+add the below to pom.xml within dependencies tag
 </p>
-
-<p>
-<b>Big-O functions</b> used while analyzing algorithms.
-</p>
-
-<p>
-<div style='padding-left: 30pt'>
-O(1) - constant time<br>
-O(log(n)) - logarithmic time<br>
-O((log(n))c) - polylogarithmic time<br>
-O(n) - linear time<br>
-O(n^2) - quadratic time<br>
-O(n^c) - polynomial time<br>
-O(c^n) - exponential time<br>
-O(n!) - factorial time
-</div>
-</p>
-
-<p>
-(n = size of input, c = some constant)
-</p>
-
-
-<hr>
-
-<br>
-<br>
-
-<p>
-<b>Find the maximum sum of a continuous subsequence in an array of integers.</b>
-</p>
-
-<p>
-e.g:
-</p>
-
-<p>
-input: 1,-3,2,5,-8
-</p>
-
-<p>
-output: 7
-</p>
-
-<p>
-_______________
-</p>
-
-<p>
-SOLUTION:
-</p>
-
 <div class="zim-object">
-<pre><code class="java">
-public static int maxSubSequence(int[] arr) {
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+    &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+</div>
 
-	if (arr == null || arr.length == 0) {
+<p>
+note : slf4j dependency are also automatically added as these are transative dependency i.e. logback depends on slf4j <br>
+maven will automatically download the dependency on the local system within a .m2/ directory
+</p>
 
-		return Integer.MIN_VALUE;
+<p>
+java class using logback
+</p>
+<div class="zim-object">
+<pre><code class="java">package com.blogspot.nodemorph;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class HelloMaven {
+	private final static Logger log = LoggerFactory.getLogger(HelloMaven.class);
+
+	public static void main(String[] args) {
+		log.info("hello info");
+		log.debug("hello debug");
 	}
-
-
-
-	int maxSoFar = arr[0], curMax = arr[0];
-
-	for (int i = 1; i &lt; arr.length; i++) {
-
-		curMax = Math.max(curMax + arr[i], arr[i]);
-
-		maxSoFar = Math.max(curMax, maxSoFar);
-
-	}
-
-
-
-	return maxSoFar;
-
 }
-
 </code></pre>
 </div>
 
 <br>
 
 <p>
-RUNNING TIME COMPLEXITY:
+<i>17:28:10.044 [main] INFO com.blogspot.nodemorph.HelloMaven - hello info</i><br>
+<i>17:28:10.049 [main] DEBUG com.blogspot.nodemorph.HelloMaven - hello debug</i>
 </p>
 
 <p>
-O(N)
+The org.slf4j.Logger interface is the main user entry point of SLF4J API. It is expected that logging takes place through concrete implementations of this interface.<br>
+The LoggerFactory is a utility class producing Loggers for various logging APIs, most notably for log4j, logback and JDK 1.4 logging. <br>
+logback uses default minimal configuration if it is not configured
 </p>
 
 <p>
-SPACE COMPLEXITY:
+logback initilization steps : Intially tries to find logback.groovy files , if not found tries to find logback.xml , if it fails to find it fall back to default configuration
 </p>
 
 <p>
-O(1)
+<img src="./logging/pasted_image.png">
 </p>
 
 <p>
-Explanation
+logback levels : TRACE, DEBUG, INFO, WARN and ERROR
 </p>
 
 <p>
-A more optimal solution to this problem is known as Kadane’s Algorithm.  The concept works off of the simple idea that at each position in the array if we know what the previous maximum subarray sum is, we can deduce that the new max must be either the previous max or the previous max + the number in our current position.  For example, if our previous max is 4 and our current number is -1, the new max remains 4.  If the previous max is 4 but our current number is 2, then the max is reassigned to be 6.  We track this as local_max = max(local_max, local_max + num).
+<img src="./logging/pasted_image001.png">
 </p>
 
 <p>
-This is an easy way of knowing at any point in time, what the current streak is that we are on, but it does not capture the greatest subarray.  For that purpose, we have a second variable global_max.  After each reassessment of local_max, we check if the newly assigned local_max is greater than our global_max.  If it is, we reassign our global_max.  This is tracked as global_max = max(local_max, global_max).
+%  is the required prefix<br>
+-5 tells how many letters can be used, 5 is the max length of the strings INFO, DEBUG, - means its left justified, leaving the - will make it right justified<br>
+{40} tells the max length of the logger name, also - is just a literal and working as a seperator<br>
+message, tells the actual logger message that comes from the program<br>
+n, new line
 </p>
 
-<p>
-Once we iterate over the entire array, our output will be whatever global_max is set to.  This algorithm produces a time complexity of O(n).
-</p>
+<div class="zim-object">
+<pre><code class="xml">&lt;configuration&gt;
+	&lt;appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender"&gt;
 
+		&lt;encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt;
+			&lt;pattern&gt;
+				%date [%thread] [%-5level] %logger{40} - %message%n
+			&lt;/pattern&gt;
+		&lt;/encoder&gt;
+	&lt;/appender&gt;
 
-<hr>
+	&lt;logger name="com.blogspot.nodemorph" level="DEBUG" /&gt;
 
-<br>
-
-<p>
-Recursion describes a situation where a function, once called, is called again before the first call completes and returns.<br>
-<b>Recursive</b> functions use something called “the call stack.”
-</p>
-
-<p>
-2 main types of recursion<br>
-Direct recursion happens when a function calls it-self within it-self before the function returns or end.<br>
-Indirect recursion (or mutual recursion) occurs when a function calls another function, eventually resulting in the original function being called again.
-</p>
-
-<br>
+	&lt;root level="INFO"&gt;
+		&lt;appender-ref ref="STDOUT" /&gt;
+	&lt;/root&gt;
+&lt;/configuration&gt;
+</code></pre>
+</div>
 
 
 	</div>
@@ -231,6 +189,15 @@ Indirect recursion (or mutual recursion) occurs when a function calls another fu
 
 	<div class='page-footer'>
 
+			<b>Attachments:</b>
+			<table>
+
+			<tr><td><a href='./logging/pasted_image.png'>pasted_image.png</a></td><td>&nbsp;</td><td>241kb</td></tr>
+
+
+			<tr><td><a href='./logging/pasted_image001.png'>pasted_image001.png</a></td><td>&nbsp;</td><td>145kb</td></tr>
+
+			</table>
 	</div>
 
 	
