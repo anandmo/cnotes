@@ -109,8 +109,8 @@ java class using logback
 <div class="zim-object">
 <pre><code class="java">package com.blogspot.nodemorph;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.Logger; //interface
+import org.slf4j.LoggerFactory; //class
 
 public class HelloMaven {
 	private final static Logger log = LoggerFactory.getLogger(HelloMaven.class);
@@ -162,15 +162,16 @@ n, new line
 
 <div class="zim-object">
 <pre><code class="xml">&lt;configuration&gt;
-	&lt;appender name="STDOUT"
-		class="ch.qos.logback.core.ConsoleAppender"&gt;
+	&lt;appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"&gt;
 
-		&lt;encoder
-			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt;
+		&lt;encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"&gt;
+		
 			&lt;pattern&gt;
 				%date [%thread] [%-5level] %logger{40} - %message%n
 			&lt;/pattern&gt;
+			
 		&lt;/encoder&gt;
+		
 	&lt;/appender&gt;
 
 	&lt;logger name="com.blogspot.nodemorph" level="DEBUG" /&gt;
@@ -178,6 +179,7 @@ n, new line
 	&lt;root level="INFO"&gt;
 		&lt;appender-ref ref="STDOUT" /&gt;
 	&lt;/root&gt;
+	
 &lt;/configuration&gt;
 </code></pre>
 </div>

@@ -1,0 +1,965 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>dsquestions</title>
+	<meta name='Generator' content='Zim 0.74.3'>
+	<style type='text/css'>
+		a          { text-decoration: none      }
+		a:hover    { text-decoration: underline }
+		a:active   { text-decoration: underline }
+		strike     { color: grey                }
+		u          { text-decoration: none;
+					 background-color: yellow   }
+		tt         { color: #2e3436;            }
+		pre        { color: #2e3436;
+					 margin-left: 20px          }
+		h1         { text-decoration: underline;
+					 color: #4e9a06; margin-bottom: 0 }
+		h2         { color: #4e9a06; margin-bottom: 0 }
+		h3         { color: #4e9a06; margin-bottom: 0 }
+		h4         { color: #4e9a06; margin-bottom: 0 }
+		h5         { color: #4e9a06; margin-bottom: 0 }
+		p          { margin-top: 0              }
+		span.zim-tag {
+			color: #ce5c00;
+		}
+		div.zim-object {
+			border-style:solid;
+			border-width:1px;
+		}
+		.checked-box {list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAANOgAADMQBiN+4gQAAAAd0SU1FB9gKGQ8sMEGsKGkAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAEBUlEQVRIx62V22tdRRTGf7Nn73P2ybntnNOe3NqkPTGgLTVUUZF6QatSLOKTPgqCIqLgQ0H/A1sQQbBYCBb1QfAxiC8tSO1FqHkwJVKtjdTGNraUmObsc9nXmfGh7cGYpM1D5nHWzPetteZb3wg2eB2YqYm4zSadsMtoboiNBH/3TE0awx6j+MRoxoTg/IYRvP19TQrJS0bzhdHGSyKFkLTtjSKwMjyiEz43ynhtP6bdjBCWyFobAf7eT7VhNF/q1FRbjYjmUohlCVPwnB+6FUxMTJipqSmUUhhjEGKd3bMT4ks/Y6oLBK2Yth8hHYtCJXOix7Nf7xLMzc0xOzvLzp078TyPNE3viW3QJPXzhNWbxFFKHCmMhoLn/FHodd48vGfhapdAacXQlkFK5dL6wIUm6fuTZPuvqDQhaMUYYyiVyuQr6rXDexYuAdi3tSv1ZJNs/R/CaszzT+1na88uXFnCEnJVgivBNN8uTJKmHQI/ptOOcXNZzMz9mOqFs90OHpipWcYwlo5P4ebnuOkrvr5wgrH+h3im7y36MzuwRXYZeKha/OhP0EkadFoxQSdGSotedR/+XwMc2XvKdNUFOFqZx6LKZWIiwjgkikNmLp/hm8sH+K1zjFTHXfBYdTi+eJArzXM0GxFxoBDCopLvo/fqEwi1XPkWkGqjFo2TgB1jOYZUKZTS/D1/ncmLh7jon0IbRWoiTi59ymzzJEEQE3cStNZsGxqlfPE57MBbOR8fP3hDGalOO9fq2DlBvmZw8xa2IxACGn6TydlD/O6f5OzSV/zif0cYhLQaEXGkKBbz7Ov/AOlXV1cxgBJRI3fuSTrpTawt18kWIZN1CFuaONI0w0WOXfsI43YIggh/KUSlhqxrMz74AkOZcWBm9QkH+Gw8NDLuITi+m0yzhluSyJzBLcpblUhFxywSRAEtPwQjsKVN30CNh0uvYuOubSHLtN3J0TO1j0pmBNuFbFWRK0gyPRZpktL2I5JQkclKakNlnh54g6ocvevUr/Ai2a7wineEkcJupA3S1Wg0nVZM2E6wbEF5U5G9Q++wI7sfR7h3N8HVNstykBfzH+KJEZwiWD0aIwxCgJ0R1Mu7GXOeJSuK93bZtQIle4D9pUNU5DC5jEsu55AvZakM5NicGyEj8uuz8bUCQgj67QfY671P3vEoeC69gy695U1U7NG7XV0pUwBjDJa1/JJlWWxzHuflzQe5FJ/GsgUVuZ2t8lEkTvfc0aNHb72flBhjVicQQqCUuvM3/M+WDVguWBrMVdDXEGZlBVEUrVCU9d9s5+fnaTQa2PZyPxEIhJaI1EEoZwX4ncynp6fXrmB4eJjR0VFarRbNZnP9P9rt9gohqNVq1Ov1ZbF/AZGev3hLJ2/zAAAAAElFTkSuQmCC)}
+		.xchecked-box {list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAANOgAADMQBiN+4gQAAAAd0SU1FB9gKGQ8bDYnDxEwAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAEK0lEQVRIx9WVS2hTWRjHf/eR3CY1nbxMH2YiZRQS6qO13YlMVxY3SnVcuNIBFezGpSADLoQqLu1sHJCqdCFSXFpw4YOCSH3BtFqttTNamabX3DS5bfO6uffMoglja3RGcDMHzuac7/z/53++//cd+L8P6VuCPQYZ8ADNgBd4J31DcDcQs+GnHByRocEDv0kfBSjAOlYCs11Q+gpwDegS8LMJ+3QIK0ATzEhV8Odnz5bzw8P4dJ25aJQ/WlvJ1df/K7hSLtOcTNI+Pk69rpMTgqIQhCDvh1/VSpw79+gRrRMTmLZNezLJJsPg+a5dmOEwQlFqg1sWG16/Jv7sGWXDwBACFQjC9HcwIMONKkGp4PGAJGEDS0IQmZlhnWnye3c3eiyGo6qr3WHbrJ+dJf7gAXI6zSIr72T7/fgzmT4FHnTBsgrQBfYvTU0km5vxz86iADnAm0rRPTWFt7cXZccOJJcLAGHb2K9ekT93jmwmwwdAAFpjI6Ntbfxw5879ag7l6o1sr5eHHR3IsRgeQK/M4sQE+YEB7JcvEY6zAj45SWFgAPPxYwzHoQxIkQjTPT0kIxE+Noj8sexFn4/xnh58iQTeSpHkHAdrbIzi0BCOrmNPTpK/eJHM3bt8sCyKQCiR4NWePWSiUZw1+ZLXJm4pFKLhzBlCsRh2RUXacVgeGaF47RrL58+zcP8+RrmMkCQinZ1EL1zAjERqmkH+tLYl1G3bCJw4QUjT0IA0MJfLMX/5MqmHD0nZNiUgtGULG/r7ccXjINWuWbnmqsuFu7sb/4EDNLlcBIEioNs2KUAFGmMxmk6dQm1tRZI+3xBqEkiShBQOox05Ql1nJ26gvuIUAWiKQnj/ftStW5Fk+YuF+NldsbBA4cYN9KdPmaso8Fc62ZJtk7l1C2t0FGdxESHE1xE4hkHh6lX0oSHSpRIewC/LrPf7CSgKNpCamkI/fZr8pUuIZBIcpyaBunahPp1mub+fDyMjGKUSChCsq6Nh717q9u2jbnSU0uAgRrFIwTThyhUCqRS+hgZKLS1fJvDm87SNjZGcnsYUAjcQ8vsJ9/Xh7u1FDgRQN20iks3iDA+zZFmYhQLqzZtsj8WY3L0baY2Sf55ICCKpFHUzM2SEQAJCHg+hY8fQDh5EDgRWDoRC1J88SePRo2geD0XAcBy8b98Sv3ePYDZbbf2rFQjLIphMsmDbaEBQVQkePox26BCSz7e6i4bDrDt+nGYhmBscpFAskheC4Js3bPR4qHphFYEnlcI7P4/jdqNpGu8TCe4oCsXr1z//F2ga3+/cSfTJE0qmSVYIsKzaOZDcbjKyzFIiwfvt21kMBLA07YsetzWNd+3tLLW0sH5igvT8PH9Go/z44kX+E4LGjg7GDYOcy4XlOEgLC//5P/5LCFzxOPLmzWyIx+m6fduu7v0NVGqyTSycKksAAAAASUVORK5CYII=)}
+		.unchecked-box {list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAANOgAADMQBiN+4gQAAAAd0SU1FB9gKGQ8qAt8h3m8AAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAA60lEQVRIx+2VsQqDMBRF70sCLg5OLoKgjk7+lJ/hh+STXBwcnRz8ArMEkrxOFktbaC3tULzTg5e8k5vADXDq70VbobXmvu/hvQczg4heHrJfXxQFuq67blZbMc8zpmlCXddIkgTOuZcBUko45zCOI6y1Nz2xFSEEZFmGOI7fGg4A3nsQEZqmuXOu9jallACAtm3fvmutNaIoAjM/dkBECCF89KCbk4eAb+kEnIAT8EsAM0OIz3hSyrssUvss8t5fg+uIrLXPs0gIgWVZYIyBUurQyYdheO4gz3NUVQVjDNZ1PfSjpWmKsixvehfB9GBZ3NndrgAAAABJRU5ErkJggg==)}
+		.migrated-box {list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAANOgAADMQBiN+4gQAAAAd0SU1FB+AKHREFA8vJSnkAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAC1klEQVRIx+2VT0hUURTGf/e958w4Tc3TYowMw1GyEgwr1MqsFmbZIrIWQZsWJUjbdoHQpl3Qps0swnCRECQFYkR/TC1iKkqmfzAKTo2Vf8hoRsfR995tkRMT87RRWkUHHhy495zvnvvu933wP/75EKkkEAjIYDCIaZpIKRFCZN0kfX9xcTGtra2/irVUEolECIfDlJeXo+s6hmFkDaCqKoZhEAqFSCaTv60pqcSyLAoLC/F4PEtqDmCaJkIIKisrMybX0sdUVRWA5ubmPzdNjjI1cpXkZC/O1fV03PXgdDqRUtpPIITAsqxsDz0Z/3CZQv8uqo4N4C8/Tp2/DdM0MiZQlvk41OTkI/LW1SGtCVb5drD3eCc71wcA+VcAHA5vDd8+3UGakxiJV7i9pdQevU5T1R35pJ3MV5QW1pf+0kWBheJ2SWua8EQXZXsu4fVVYEz1sEKvof5EuxjoPvzpcRvrdp9C2gGMx6cpOHBmbImMesds7BZubwMVDTfXDnQ3vQfK7AC8wLfExMX5whyQc3q2OEnjGm5vE76SQxsfBLr77a7CNf+n0r/l6sSMtsBSnurckiIILCobAtVZhpF4gZF4jubaymj4Ch/fd380LE7bAnjc0NPxk2yqpmEuwGxF0ag+0k5uTpzZeBeaazvj0We8fXojainsb2xh2BZgbe0gSIllzSIUh63wfQ6dZ/O2fbjcKlOj58jJ3cVENESw5yErc9nf2MLQ4jwQAkV1Lqiq37/cZ9WaahJjF9AcmxiPDhLs7ePe23oOnmUwg2hSShQle96tKDjA2HAniusgo9FxnvY9Jxw7RWzGYy92QghM00x5g53qp9sHmtB58/o2umOI2NwGolMnMYUHIb7aAyiKwsjICLqu2/qBEIKUUAohMaSHSLyBSMoPTINQ6CX5+fn2AEVFRZSUlBCPx4nFYhl3L4RESjF/GEgX3pSj+Xw+/H7/b3U/AEOZFnp7O5+5AAAAAElFTkSuQmCC)}
+		ul {list-style-image: none}
+		/* ul rule needed to reset style for sub-bullets */
+	</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class='header'>
+	[ <a href='./CSS.html'>Prev</a> ]
+
+	[ <a href='./index.html'>Index</a> ]
+
+	[ <a href='./git.html'>Next</a> ]
+</div>
+
+<hr />
+
+<!-- Wiki content -->
+
+<div class='pages'>
+	<div class='heading'>
+	<h1>dsquestions <a name='dsquestions'></a></h1>
+	</div>
+
+	<div class='content'>
+	<p>
+Created Thursday 24 March 2022
+</p>
+
+<p>
+Data Structures and Algorithms Interview Questions
+</p>
+
+<p>
+Data Structures
+</p>
+
+<p>
+General Concepts of Data Structures
+</p>
+
+<p>
+1: What are Data Structures?
+</p>
+
+<p>
+2: What are the advantages of using Data Structures?
+</p>
+
+<p>
+3: What is a data object?
+</p>
+
+<p>
+4: What are data types?
+</p>
+
+<p>
+5: What are the different types of Data Structures?
+</p>
+
+<p>
+6: Explain the Linear Data Structures.
+</p>
+
+<p>
+7: Explain the non-linear data structures.
+</p>
+
+<p>
+8: What are the basic operations possible in Data Structures?
+</p>
+
+<p>
+9: What is a node?
+</p>
+
+<p>
+10: What are Primitive Data types?
+</p>
+
+<p>
+11: Explain the record structure.
+</p>
+
+<p>
+12: What is a file? How is it different from a record?
+</p>
+
+<p>
+13: Explain the difference between sequential and structured data.
+</p>
+
+<p>
+14: Explain the different sorting methods commonly used to sort arrays.
+</p>
+
+<p>
+15: Explain Selection sort.
+</p>
+
+<p>
+16: Explain Bubble sort.
+</p>
+
+<p>
+17: What are linked lists?
+</p>
+
+<p>
+18: Explain Binary Search Tree.
+</p>
+
+<p>
+19: Explain the different algorithm patterns used with data structures.
+</p>
+
+<p>
+20: What are the practical applications of data structures?
+</p>
+
+<p>
+Arrays
+</p>
+
+<br>
+<br>
+
+<p>
+21: What is an Array?
+</p>
+
+<p>
+22: What are the basic operations possible with Arrays?
+</p>
+
+<p>
+23: How you insert into an Array?
+</p>
+
+<p>
+24: How do you delete from an Array?
+</p>
+
+<p>
+25: Explain the search operation in an Array.
+</p>
+
+<p>
+26: What is an iterator?
+</p>
+
+<p>
+27: What is a matrix?
+</p>
+
+<p>
+Stacks
+</p>
+
+<p>
+28: Why are stacks used to perform recursion?
+</p>
+
+<p>
+29: What are the basic stack operations?
+</p>
+
+<p>
+30: Can you implement a queue using a stack? Explain
+</p>
+
+<p>
+31: Write the basic algorithm to implement the push function for a stack
+</p>
+
+<p>
+32: Explain the steps involved in the Pop operation for stack.
+</p>
+
+<p>
+33: Explain three practical applications of Stacks in software.
+</p>
+
+<p>
+34: What do you mean by stack overflow?
+</p>
+
+<p>
+35: What are the basic features of a Queue?
+</p>
+
+<p>
+36: What are the applications of queue?
+</p>
+
+<p>
+Queues
+</p>
+
+<p>
+37: Explain how to implement a queue using an array.
+</p>
+
+<p>
+38: What is a circular queue?
+</p>
+
+<p>
+39: Explain the steps involved in Enqueue operation.
+</p>
+
+<p>
+40: Explain the steps involved in dequeue operation.
+</p>
+
+<p>
+Lists
+</p>
+
+<p>
+41: What are the advantages of Linked Lists?
+</p>
+
+<p>
+42: List out the disadvantages of linked lists
+</p>
+
+<p>
+43: What are the different types of linked lists?
+</p>
+
+<p>
+44: Explain a singly linked list. What are its applications?
+</p>
+
+<br>
+<br>
+
+<p>
+45: Explain a doubly linked list. What are its applications?
+</p>
+
+<p>
+46: What is a circular linked list? What are its applications?
+</p>
+
+<p>
+47: How to find the length of a linked list?
+</p>
+
+<p>
+48: Explain the insertion operation in a singly linked list
+</p>
+
+<p>
+49: Explain deletion operation in a singly linked list.
+</p>
+
+<p>
+50: How to bubble sort a linked list?
+</p>
+
+<p>
+51: How to insert into a doubly linked list?
+</p>
+
+<p>
+52: Write a C program to insert into a circular singly linked list
+</p>
+
+<p>
+53: Explain traversing through a linked list.
+</p>
+
+<p>
+54: What are the differences between a linked list and an array?
+</p>
+
+<p>
+55: Consider a linked list with the following data:
+</p>
+
+<p>
+Hash Data Structure
+</p>
+
+<p>
+56: What is a hashing?
+</p>
+
+<p>
+57: What is a hash table?
+</p>
+
+<p>
+58: What is linear probing?
+</p>
+
+<p>
+59: What are the common uses of hash tables?
+</p>
+
+<p>
+60: How do you use the right hash function?
+</p>
+
+<p>
+61: Explain Collision resolution.
+</p>
+
+<p>
+62: Explain Chaining.
+</p>
+
+<p>
+63: Explain Open addressing.
+</p>
+
+<p>
+64: What are the differences between Chaining and Open Addressing?
+</p>
+
+<p>
+65: What are the problems with hash tables?
+</p>
+
+<p>
+66: Explain Probabilistic hashing.
+</p>
+
+<p>
+67: Explain Perfect hashing.
+</p>
+
+<p>
+68: Explain Coalesced hashing.
+</p>
+
+<p>
+69: Explain Extendible hashing.
+</p>
+
+<p>
+70: Explain Linear hashing.
+</p>
+
+<br>
+<br>
+
+<p>
+Trees
+</p>
+
+<p>
+71: Explain the Tree data structure.
+</p>
+
+<p>
+72: What are the properties of a tree?
+</p>
+
+<p>
+73: Explain Node, Edge, Leaf, and Root of a tree.
+</p>
+
+<p>
+74: Differentiate among Parent, Sibling and Subtree of a tree.
+</p>
+
+<p>
+75: What is a red-black tree?
+</p>
+
+<p>
+76: Explain Tree Traversal.
+</p>
+
+<p>
+77: Explain Preorder.
+</p>
+
+<p>
+78: Explain Postorder.
+</p>
+
+<p>
+79: Explain Inorder.
+</p>
+
+<p>
+80: Explain a binary search tree.
+</p>
+
+<p>
+81: Explain a Trie.
+</p>
+
+<p>
+82: Explain BSF and DSF for BST.
+</p>
+
+<p>
+83: What are the differences between BSF and DSF for BST?
+</p>
+
+<p>
+84: Explain a Spanning Tree.
+</p>
+
+<p>
+85: How do you convert a binary tree into a doubly linked list?
+</p>
+
+<p>
+86: How do you convert a doubly linked list into a balanced BST?
+</p>
+
+<p>
+87: What is a Threaded Binary Tree?
+</p>
+
+<p>
+88: What is an AVL Tree?
+</p>
+
+<p>
+89: How do you find the height of a node in a tree?
+</p>
+
+<p>
+90: How do you insert into an ordered BST?
+</p>
+
+<p>
+91: How do you delete from an ordered BST?
+</p>
+
+<p>
+92: How do you search in an ordered BST?
+</p>
+
+<p>
+93: How do you find out whether a tree is full Binary or not?
+</p>
+
+<p>
+94: How do you create a binary tree from an array?
+</p>
+
+<p>
+95: What is an expression tree?
+</p>
+
+<p>
+96: How do you evaluate an expression tree?
+</p>
+
+<p>
+97: What is a symmetric tree?
+</p>
+
+<br>
+<br>
+
+<p>
+98: How do you find the largest number in a binary tree?
+</p>
+
+<p>
+99: How do you find the level of a node in tree?
+</p>
+
+<p>
+100: What is a Ternary search tree?
+</p>
+
+<p>
+Sets
+</p>
+
+<p>
+101: What is a set?
+</p>
+
+<p>
+102: What are the generally used implementations of sets?
+</p>
+
+<p>
+103: What is a Null Set? What is its use?
+</p>
+
+<p>
+104: What are the basic operations you can do with a set?
+</p>
+
+<p>
+105: What are the different types of Sets?
+</p>
+
+<p>
+106: Explain the Bit Vector representation of sets.
+</p>
+
+<p>
+107: What are disjoint sets?
+</p>
+
+<p>
+108: What is a Sparse Set?
+</p>
+
+<p>
+Graphs
+</p>
+
+<p>
+109: What is a Graph data structure?
+</p>
+
+<p>
+110: What is the difference between Graph and a Tree data structure?
+</p>
+
+<p>
+111: Explain Vertex, Edge, Adjacency and Path in a Graph
+</p>
+
+<p>
+112: What are the different types of Graphs?
+</p>
+
+<p>
+113: Explain Graph representations.
+</p>
+
+<p>
+114: What are the basic operations in a Graph?
+</p>
+
+<p>
+115: Explain the IsReachable function implementation
+</p>
+
+<p>
+116: Explain Graph traversals.
+</p>
+
+<p>
+117: Explain DFS in Graph.
+</p>
+
+<p>
+118: Explain BFS in Graph.
+</p>
+
+<p>
+119: Explain some of the common applications of Graph.
+</p>
+
+<p>
+120: How do you represent a graph using a matrix?
+</p>
+
+<p>
+121: Explain Adjacency Matrix.
+</p>
+
+<br>
+<br>
+
+<p>
+122: What are the advantages and disadvantages of Adjacency Matrix?
+</p>
+
+<p>
+123: Explain Adjacency List.
+</p>
+
+<p>
+124: What are the advantages and disadvantages of Adjacency List?
+</p>
+
+<p>
+125: What do you mean by cost of a graph?
+</p>
+
+<p>
+126: Explain the Minimum Spanning Tree problem
+</p>
+
+<p>
+127: How are Graphs advantageous in implementing real-time solutions?
+</p>
+
+<p>
+128: What is Incidence matrix?
+</p>
+
+<p>
+129: What is Incidence list?
+</p>
+
+<p>
+130: How do you find the shortest path in a Graph?
+</p>
+
+<p>
+Algorithms
+</p>
+
+<p>
+General Concepts Of Algorithms
+</p>
+
+<p>
+131: What do you mean by Algorithm?
+</p>
+
+<p>
+132: What are input specialized and strategy specialized algorithms?
+</p>
+
+<p>
+133: What are the different types of input specialized Algorithms commonly used?
+</p>
+
+<p>
+134: What are the different Strategy specialized algorithms?
+</p>
+
+<p>
+135: Explain Divide-and-Conquer Algorithm.
+</p>
+
+<p>
+136: Give some examples of Divide-and-Conquer Algorithm.
+</p>
+
+<p>
+137: Explain Dynamic Programming Algorithm.
+</p>
+
+<p>
+138: Give some examples of Dynamic Programming Algorithm.
+</p>
+
+<p>
+139: Explain Greedy Algorithm.
+</p>
+
+<p>
+140: Give some examples of Greedy Algorithm.
+</p>
+
+<p>
+141: Explain Iterative Algorithm.
+</p>
+
+<p>
+142: Explain Algorithm analysis.
+</p>
+
+<p>
+143: Explain Asymptotic Algorithm Analysis.
+</p>
+
+<p>
+144: Explain Tower of Hanoi.
+</p>
+
+<br>
+<br>
+
+<p>
+145: Explain the algorithm for finding Fibonacci series.
+</p>
+
+<p>
+146: Explain the algorithm for Sieve of Eratosthenes.
+</p>
+
+<p>
+147: Explain the algorithm for generating a random password of fixed length.
+</p>
+
+<p>
+148: Write the algorithm to check whether the given number is fancy
+</p>
+
+<p>
+149: Write the algorithm to check whether the given number is Palindrome
+</p>
+
+<p>
+150: Write the algorithm to reverse an array
+</p>
+
+<p>
+Sorting Algorithms
+</p>
+
+<p>
+151: How do you classify sorting algorithms?
+</p>
+
+<p>
+152: What are some of the popular sorting algorithms?
+</p>
+
+<p>
+153: Explain the different techniques used for sorting?
+</p>
+
+<p>
+154: What are stable and non-stable sorting algorithms?
+</p>
+
+<p>
+155: What are adaptive and non-adaptive sorting algorithms?
+</p>
+
+<p>
+156: How do you check for stability in sorting algorithms?
+</p>
+
+<p>
+157: Explain Insertion Sort.
+</p>
+
+<p>
+158: Explain Selection Sort.
+</p>
+
+<p>
+159: What are the efficient sort algorithms used and why?
+</p>
+
+<p>
+160: Explain Merge sort.
+</p>
+
+<p>
+161: Explain Heapsort.
+</p>
+
+<p>
+162: Explain Quicksort.
+</p>
+
+<p>
+163: Explain Bubble sort.
+</p>
+
+<p>
+164: Explain Shell sort.
+</p>
+
+<p>
+165: Explain Comb sort
+</p>
+
+<p>
+166: What are the various distribution sort algorithms used?
+</p>
+
+<p>
+167: Explain Counting sort.
+</p>
+
+<p>
+168: Explain Bucket sort.
+</p>
+
+<p>
+169: Explain Radix sort.
+</p>
+
+<br>
+<br>
+
+<p>
+170: What do you mean by index sorting?
+</p>
+
+<p>
+171: Explain Pigeonhole Sort.
+</p>
+
+<p>
+172: Explain some of the issues faced for implementation of quicksort.
+</p>
+
+<p>
+173: What do you mean by shuffling?
+</p>
+
+<p>
+174: Explain Cycle Sort.
+</p>
+
+<p>
+175: Explain sorted insert into a singly linked list.
+</p>
+
+<p>
+176: Which algorithms takes minimum number of memory writes and why?
+</p>
+
+<p>
+177: Why is quick sort preferred for Arrays and merge sort for Linked lists?
+</p>
+
+<p>
+Search Algorithms
+</p>
+
+<p>
+178: Explain the algorithm for linear search.
+</p>
+
+<p>
+179: Explain the algorithm for binary search.
+</p>
+
+<p>
+180: Explain interpolation search.
+</p>
+
+<p>
+181: Write the algorithm to find the largest element in an array of unique elements
+</p>
+
+<p>
+182: Write the algorithm to find the LCM of array elements
+</p>
+
+<p>
+183: Write the algorithm to find the position of an element in the given sorted array of infinite elements
+</p>
+
+<p>
+184: Write the algorithm to find how many times an element repeats in a sorted array
+</p>
+
+<p>
+185: Explain the Graph BFS Algorithm
+</p>
+
+<p>
+186: Explain the Graph DFS Algorithm
+</p>
+
+<p>
+187: Write the algorithm to check if the given array is a subset of another array, using Binary Search
+</p>
+
+<p>
+188: How will you search in an almost sorted array?
+</p>
+
+<p>
+189: Explain why a Binary search is better than a Ternary search.
+</p>
+
+<p>
+190: How can we check if the given tree is a binary heap?
+</p>
+
+<br>
+<br>
+
+<p>
+Huffman Coding
+</p>
+
+<p>
+191: What is Huffman Coding?
+</p>
+
+<p>
+192: How do you generate a Huffman Tree from a given set of values?
+</p>
+
+<p>
+193: What are the techniques used in Huffman Coding?
+</p>
+
+<p>
+194: Explain Compression technique for Huffman Coding
+</p>
+
+<p>
+195: Explain Decompression technique for Huffman Coding
+</p>
+
+<p>
+196: What are the main properties of Huffman Coding?
+</p>
+
+<p>
+197: What are the variations of Huffman Coding available?
+</p>
+
+<p>
+198: Explain Huffman Template Algorithm.
+</p>
+
+<p>
+199: Explain Adaptive Huffman coding.
+</p>
+
+<p>
+200: What are the applications of Huffman Coding?
+</p>
+
+	</div>
+
+	<br />
+
+	<div class='page-footer'>
+
+	</div>
+
+	
+
+</div>
+
+</body>
+</html>
