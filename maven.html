@@ -44,7 +44,7 @@
 
 	[ <a href='./index.html'>Index</a> ]
 
-	[ <a href='./thymeleaf.html'>Next</a> ]
+	[ <a href='./spring.html'>Next</a> ]
 </div>
 
 <hr />
@@ -62,11 +62,12 @@ Created Wednesday 23 March 2022
 </p>
 
 <p>
-archetype - maven templates used whle creating project to save time<br>
-groupid and artifactid - uniquely identifies the project
+<b>archetype</b> - maven templates used whle creating project to save time<br>
+<b>groupid and artifactid</b> - uniquely identifies the project
 </p>
 
 <p>
+example :<br>
 groupid - com.blogspot.nodemorph<br>
 artifactid - hello-maven
 </p>
@@ -105,20 +106,41 @@ note : maven tries to compile java code using JDK 1.5 and can give warning , we 
 <img src="./maven/pasted_image.png">
 </p>
 
+<br>
+<br>
+
 <p>
-<b>maven life cycle</b> -  There are three built-in build lifecycles: default, clean and site. The default lifecycle handles your project deployment, the clean lifecycle handles project cleaning, while the site lifecycle handles the creation of your project's web site.
+<b>maven life cycle</b> -  3 built-in build lifecycles: default, clean and site. 
 </p>
 
 <p>
-Each lifecycle has different phases in them as given below. A phase is a stage/step in that lifecycle. Remember when a phase is executed, it executes the previous phases as well.<br>
+The default lifecycle handles your project deployment.<br>
+The clean lifecycle handles project cleaning.<br>
+While the site lifecycle handles the creation of your project's web site.
+</p>
+
+<br>
+<br>
+
+<p>
+A  Lifecycle is Made Up of Phases. These lifecycle phases are executed sequentially to complete the lifecycle. 
+</p>
+
+<p>
+A phase is a stage/step in that lifecycle. 
+</p>
+
+<p>
+Remember when a phase is executed, it executes the previous phases as well.
+</p>
+
+<p>
 <img src="./maven/pasted_image002.png">
 </p>
 
 <p>
 Ex. When “compile” phase is executed, the previous phases validate, Initialize, generate-sources, process-sources, generate-resources, process-resources are also executed.
 </p>
-
-<br>
 
 <p>
 Example Commands to execute maven phases:
@@ -131,22 +153,31 @@ mvn install<br>
 mvn site
 </p>
 
+<br>
+<br>
+
 <p>
-A  Lifecycle is Made Up of Phases. These lifecycle phases are executed sequentially to complete the lifecycle. 
+<b>Goals</b> are the individual task. In phases, maven runs the previous phases as well when called. But, goals run the particular task of compile, package, test, etc.
 </p>
 
 <p>
-<b>Goals</b> are the individual task. In phases, maven runs the previous phases as well when called. But, goals run the particular task of compile, package, test, etc.<br>
-For ex, we have seen “compile” phase executes the previous phases validate, Initialize, generate-sources, process-sources, generate-resources, process-resources. But if we execute compile as a maven goal, it just executes that compile step alone.
+For ex, we have seen “compile” phase executes the previous phases validate, Initialize, generate-sources, process-sources, generate-resources, process-resources. <br>
+But if we execute compile as a maven goal, it just executes that compile step alone.
 </p>
 
+<br>
+<br>
+
 <p>
-Maven internally calls different plugins to do every task. When you call a phase or a goal, the relevant plugins are called to execute them. 
+Maven internally calls different <b>plugins</b> to do every task. When you call a phase or a goal, the relevant plugins are called to execute them. 
 </p>
 
 <p>
 When we call “mvn compiler:compile” goal, the “maven-compiler-plugin” alone gets called.
 </p>
+
+<br>
+<br>
 
 <p>
 <b>maven plugins</b> - Plugins are artifacts that provide goals to Maven. Furthermore, a plugin may have one or more goals wherein each goal represents a capability of that plugin. For example, the Compiler plugin has two goals: compile and testCompile. 
@@ -170,6 +201,8 @@ example :<br>
 mvn clean install<br>
   clean and install are two phases
 </p>
+
+<br>
 
 <p>
 to fix jdk version used by maven we need to a new maven compiler plugin and define the newer java version there in pom.xml
@@ -209,11 +242,24 @@ to fix jdk version used by maven we need to a new maven compiler plugin and defi
 </div>
 
 <br>
+
+<p>
+another way to fix the issue in eclipse
+</p>
+
+<p>
+go to jre system library property in the project
+</p>
+
+<p>
+<img src="./maven/pasted_image003.png">
+</p>
+
+<p>
+<img src="./maven/pasted_image004.png">
+</p>
+
 <br>
-
-
-<hr>
-
 <br>
 
 
@@ -233,6 +279,12 @@ to fix jdk version used by maven we need to a new maven compiler plugin and defi
 
 
 			<tr><td><a href='./maven/pasted_image002.png'>pasted_image002.png</a></td><td>&nbsp;</td><td>50.7kb</td></tr>
+
+
+			<tr><td><a href='./maven/pasted_image003.png'>pasted_image003.png</a></td><td>&nbsp;</td><td>39.6kb</td></tr>
+
+
+			<tr><td><a href='./maven/pasted_image004.png'>pasted_image004.png</a></td><td>&nbsp;</td><td>70.5kb</td></tr>
 
 			</table>
 	</div>

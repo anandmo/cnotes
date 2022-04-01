@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>polymorphism</title>
+	<title>javascript</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -40,11 +40,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./multithreading.html'>Prev</a> ]
+	[ <a href='./java/polymorphism.html'>Prev</a> ]
 
-	[ <a href='../index.html'>Index</a> ]
+	[ <a href='./index.html'>Index</a> ]
 
-	[ <a href='../javascript.html'>Next</a> ]
+	[ <a href='./junit.html'>Next</a> ]
 </div>
 
 <hr />
@@ -53,67 +53,147 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>polymorphism <a name='java:polymorphism'></a></h1>
+	<h1>javascript <a name='javascript'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Sunday 13 March 2022
+Created Friday 25 March 2022
 </p>
 
 <p>
-Before going to polymorphism, let's review some OOPS fundamentals. <br>
-The 4 pillars of OOPS are Abstraction, Polymorphism, Inheritance, Encapsulation. I call them <b>A-PIE</b>. <br>
-<ul>
-<li>In short, Abstraction means to hide the complex and only expose what is required. The inner workings are hidden. Example would be a Java Class.</li>
-<li>Polymorphism means that an entity (methods and operator) can show multiple behaviors. The best example of Java for polymorphism is method overloading and method overriding.</li>
-<li>The use case for Inheritance is code reuse, so that we don't have to reinvent the wheel every-time.</li>
-<li>Simply put Encapsulation means to restrict the data access. This can be done in java using public, private, protected and default access modifiers.</li>
-</ul>
+Initially was called LiveScript and was developed by Brenden Eich in 10 days<br>
+To standarize javascript ECMAScript was created<br>
+Just like in a movie there is script which actor follows similarly in the website elements act like actors and javascript tells them what to do<br>
+javascript is interpreted language unlike java which is compiled
 </p>
 
 <p>
-There are certain best practice we can follow while working in OOPS<br>
-<ul>
-<li>The principle is called DRY which means Don’t Repeat Yourself . Having two blocks of the same code in two different places is redundant and increases code complexity.</li>
-<li>All class and methods should always have only one functionality (Single Responsibility)</li>
-<li>All methods and classes should be closed for modification but open for an extension (Open Closed Design)</li>
-</ul>
-Let's go through the below program which is an example of polymorphism, where instance method overriding is happening and dynamic binding happens during runtime.
+alert("Hello World");<br>
+alert is a function keyword
+</p>
+
+<p>
+<b>data types</b><br>
+string : "Hello World"<br>
+number : 12345<br>
+boolean : true  false
+</p>
+
+<p>
+typeof() fumction tells the datatype of a data<br>
+typeof(123) -&gt; number
+</p>
+
+<p>
+prompt("How is the weather ?");<br>
+prompt is used to prompt a question to user in a browser
+</p>
+
+<p>
+var myName = "Anand M";<br>
+var is a keyword to denote a variable<br>
+myName is the name of the variable
+</p>
+
+<p>
+<b>variable naming convention for javascript</b><br>
+<ol type="1" start="1">
+<li>give variable meaning full name and use camel-case</li>
+<li>keywords cannot be used as variable names</li>
+<li>variable name cannot be numbers, but it can have number when used with alphabets</li>
+<li>variables name can only contain alphabets numbers $ and _ , no other symbols are allowed</li>
+</ol>
+</p>
+
+<p>
+string concatenation
+</p>
+
+<p>
+number of character in a string
+</p>
+
+<p>
+var name = "Anand"<br>
+name.length will give number of character
+</p>
+
+<p>
+null value = null, undefined, nan
+</p>
+
+<p>
+string slicing<br>
+slice(x,y)<br>
+x - start at this position<br>
+y - go upto y but not include it
+</p>
+
+<p>
+message  = message.slice(0,100);
+</p>
+
+<p>
+toUpperCase() and toLowerCase() to convert string to upper or lower case
+</p>
+<div class="zim-object">
+<pre><code class="js">var name = prompt("What is your name ?");
+
+nameFirstChar = name.slice(0,1);
+nameRestChar = name.slice(1,name.length);
+
+alert("Welcome "+nameFirstChar.toUpperCase()+nameRestChar.toLowerCase());
+</code></pre>
+</div>
+
+<br>
+
+<p>
+math experssion<br>
+mod operator % <br>
+12%4 is 0<br>
+as remainder is zero
 </p>
 
 <div class="zim-object">
-<pre><code class="java">class Animal {
-  public void animalSound() {
-  System.out.println("The animal makes a sound");
- }
-}
- 
-class Pig extends Animal {
-@Override
- public void animalSound() {
- System.out.println("The pig says: wee wee");
- }
-}
-class Dog extends Animal {
- @Override
- public void animalSound() {
- System.out.println("The dog says: bow wow");
- }
-}
- 
-class Main {
- public static void main(String[] args) {
- Animal myAnimal = new Animal(); //object creation happens at runtime
- Animal myPig = new Pig(); //upcasting
- Animal myDog = new Dog(); //upcasting
- 
-//jvm only knows which animalSound() to call based on the object created
- at runtime pointed by the reference, hence dynamic binding
- myAnimal.animalSound();
- myPig.animalSound();
- myDog.animalSound();
- }
+<pre><code class="js">var dogAge = prompt("What is the dog age ?");
+var humanAge = (dogAge - 2)*4 + 21;
+alert("humanAge of dog is "+humanAge);
+</code></pre>
+</div>
+
+<br>
+
+<p>
+increment and decrement expression<br>
+x++, x--, x+=1, x*=2
+</p>
+
+<p>
+What does y  equal?<br>
+var x = 3;<br>
+var y = x++;<br>
+y += 1;
+</p>
+
+<p>
+op : 4,5,2,1<br>
+ans : 4
+</p>
+
+<h5>========================================================================================================<a id="" class="h_anchor"></a></h5>
+
+<br>
+
+<p>
+<b>functions</b> in javascript
+</p>
+
+<div class="zim-object">
+<pre><code class="js">function getMilk() {
+ //instruction to get milk
+ console.log("milk fetched);
 }
 </code></pre>
 </div>
@@ -121,73 +201,81 @@ class Main {
 <br>
 
 <p>
-Output :<br>
-The animal makes a sound<br>
-The pig says: wee wee<br>
-The dog says: bow wow
+use <i>function</i> keyword while creating function
 </p>
 
 <p>
-The above program should clear up the difference between method overloading (static binding) and method overriding (dynamic binding)<br>
-So, Method overloading in Java happens when a class has more than one method of the same name and their parameters are different. And creating a method in a child class which is already present in the parent class is known as method overriding. In java the child class method is followed by <span class="zim-tag">@Override</span> annotation.
+calling function 
+</p>
+<div class="zim-object">
+<pre><code class="js">getMilk();
+</code></pre>
+</div>
+
+<br>
+
+<p>
+parameterised functions
 </p>
 
 <p>
-At this time let us also understand one more term called Up-casting. When we create a child class instance and store it in parent class reference  ,this is also known as up-casting or widening<br>
-Parent p = new Child();
+function getMilk(count) {
 </p>
 
 <p>
-<b>In up-casting the  reference can access the parent class members but it cannot access all the child class members. Instead reference p can access only the overridden methods.</b><br>
-Note : <i>Child class is a subset of parent class. Dog is-a animal. A subclass can access all public methods of super-class.</i>
+}
 </p>
 
 <p>
- Lets come back to <b>Static vs Dynamic binding</b><br>
-Association of method definition to the method call is known as binding. There are two types of binding: Static binding and dynamic binding<br>
-Static binding happens during the compile time, when the code is compiled by the compiler. The compiler is well aware which class is calling the methods.
+function with return statement
 </p>
 
 <p>
-Note : <i>Binding of static (belongs to the class not any instance), private (hidden from outside access) and final (cannot change) methods is compile-time or static. because these methods cannot be overridden and the class type is determined at the compile time.</i>
+function getMilk() {
 </p>
 
 <p>
-This brings us to one more important concept of <b>virtual functions</b> in programming. In many programming languages like C++ a function in parent class can only be overridden in child class only if it is declared as virtual with the help of virtual keyword.
+return milk;
 </p>
 
 <p>
-Note : <i>In Java all the functions except static or private or final are virtual functions by default.</i>
+}
+</p>
+
+
+<hr>
+
+<br>
+
+<p>
+random number generation
 </p>
 
 <p>
-In contrast, in C++ all the class member functions are non-virtual by default. They are made virtual by using the virtual keyword in the function signature.if the function of base class is made virtual then the function of Derived or Child class’s function with the same name can override the Base class’s function.<br>
-Since in Java all methods are virtual by default which means any method can be overridden when used in inheritance, unless that method is declared as final or static.
+var n = Math.random();
 </p>
 
 <p>
-This brings us to one more important concept called <b>VIrtual Method Table</b>.
+value ranges from 0 to 0.9999999999999999<br>
+value is never 1
 </p>
 
 <p>
-As per Wikipedia :<br>
-“A virtual method table (VMT), virtual function table, virtual call table, dispatch table, vtable, or vftable is a mechanism used in a programming language to support dynamic dispatch (or run-time method binding).The table are used at runtime to invoke the appropriate function implementations, because at compile time it may not yet be known if the base function is to be called or a derived one implemented by a class that inherits from the base class.”
+note : Software-generated random numbers only are pseudorandom. Because the computer uses deterministic, predictable algorithms.
 </p>
 
-<p>
-<b>So, it is clear that in method overriding, the method is bound to the objects on the runtime (as object creation ex : Temp temp = new obj1 happens at runtime) which is decided by the JVM. That’s why it is called Run time polymorphism.</b>
-</p>
 
-<p>
-Lets summarize the difference static and dynamic binding :<br>
-Static binding is a type of polymorphism that collects the information to call a method during the compile-time, it is faster.<br>
-Dynamic binding is a  type of polymorphism that collects the information to call a method at the runtime, it is comparatively slower.
-</p>
+<hr>
 
-<p>
-Let's end this article by again quoting Wikipedia definition of polymorphism <br>
-“In programming languages and type theory, polymorphism is the provision of a single interface to entities of different types or the use of a single symbol to represent multiple different types. The concept is borrowed from a principle in biology where an organism or species can have many different forms or stages.” 
-</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 	</div>
 

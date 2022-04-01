@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>polymorphism</title>
+	<title>spring-multi-module-project</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -40,11 +40,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./multithreading.html'>Prev</a> ]
+	[ <a href='../spring.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='../javascript.html'>Next</a> ]
+	[ <a href='./spring-multi-module-project/spring-ioc-container.html'>Next</a> ]
 </div>
 
 <hr />
@@ -53,141 +53,193 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>polymorphism <a name='java:polymorphism'></a></h1>
+	<h1>spring-multi-module-project <a name='spring:spring-multi-module-project'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Sunday 13 March 2022
+Created Friday 25 March 2022
 </p>
 
 <p>
-Before going to polymorphism, let's review some OOPS fundamentals. <br>
-The 4 pillars of OOPS are Abstraction, Polymorphism, Inheritance, Encapsulation. I call them <b>A-PIE</b>. <br>
-<ul>
-<li>In short, Abstraction means to hide the complex and only expose what is required. The inner workings are hidden. Example would be a Java Class.</li>
-<li>Polymorphism means that an entity (methods and operator) can show multiple behaviors. The best example of Java for polymorphism is method overloading and method overriding.</li>
-<li>The use case for Inheritance is code reuse, so that we don't have to reinvent the wheel every-time.</li>
-<li>Simply put Encapsulation means to restrict the data access. This can be done in java using public, private, protected and default access modifiers.</li>
-</ul>
+spliting the project in logical unit or modules for easy refactoring, reuse and development<br>
+one single maven command can build all modules and maven can take care of build order
 </p>
 
 <p>
-There are certain best practice we can follow while working in OOPS<br>
-<ul>
-<li>The principle is called DRY which means Don’t Repeat Yourself . Having two blocks of the same code in two different places is redundant and increases code complexity.</li>
-<li>All class and methods should always have only one functionality (Single Responsibility)</li>
-<li>All methods and classes should be closed for modification but open for an extension (Open Closed Design)</li>
-</ul>
-Let's go through the below program which is an example of polymorphism, where instance method overriding is happening and dynamic binding happens during runtime.
+<img src="./spring-multi-module-project/pasted_image.png">
 </p>
 
+<p>
+<a href="./UML_Diagram.html" title="UML Diagram" class="page">UML Diagram</a> for the project
+</p>
+
+<p>
+<img src="./spring-multi-module-project/pasted_image001.png">
+</p>
+
+<p>
+create a multi-module maven project<br>
+create a sub project
+</p>
+
+<p>
+parent-project (also called pom project) CONTAINS child-project (modules)
+</p>
+
+<p>
+parent-project does not contain any code, since its just a project that specifies the modules<br>
+as a result we can delete the source directory in parent project since its not required<br>
+add <i>&lt;packaging&gt;pom&lt;/packaging&gt;</i> in pom.xml of this parent-project<br>
+pom is a container of sub modules<br>
+each sub-project is represented as a directory in the parent-project 
+</p>
+
+<p>
+<b>create sub-project/sub-module</b> <br>
+in eclipse :<br>
+   1. right click the parent project -&gt; new project<br>
+   <img src="./spring-multi-module-project/pasted_image004.png">    <br>
+   2. select project type as maven -&gt; maven module<br>
+   <img src="./spring-multi-module-project/pasted_image005.png"> <br>
+   3. enter the child project module name. Parent Module will be pre-selected
+</p>
+
+<p>
+   <img src="./spring-multi-module-project/pasted_image003.png">
+</p>
+
+<br>
+
+<p>
+here <i>core</i> is the name of the child project, by default child project is <i>jar</i>
+</p>
 <div class="zim-object">
-<pre><code class="java">class Animal {
-  public void animalSound() {
-  System.out.println("The animal makes a sound");
- }
-}
- 
-class Pig extends Animal {
-@Override
- public void animalSound() {
- System.out.println("The pig says: wee wee");
- }
-}
-class Dog extends Animal {
- @Override
- public void animalSound() {
- System.out.println("The dog says: bow wow");
- }
-}
- 
-class Main {
- public static void main(String[] args) {
- Animal myAnimal = new Animal(); //object creation happens at runtime
- Animal myPig = new Pig(); //upcasting
- Animal myDog = new Dog(); //upcasting
- 
-//jvm only knows which animalSound() to call based on the object created
- at runtime pointed by the reference, hence dynamic binding
- myAnimal.animalSound();
- myPig.animalSound();
- myDog.animalSound();
- }
-}
+<pre><code class="xml">  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  
+    &lt;parent&gt;
+       &lt;groupId&gt;com.blogspot.nodemorph&lt;/groupId&gt;
+       &lt;artifactId&gt;guess-the-number-game&lt;/artifactId&gt;
+       &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    
+  &lt;artifactId&gt;core&lt;/artifactId&gt;
+  &lt;name&gt;core&lt;/name&gt;
 </code></pre>
 </div>
 
 <br>
 
 <p>
-Output :<br>
-The animal makes a sound<br>
-The pig says: wee wee<br>
-The dog says: bow wow
+similarly parent project pom.xml is updated automatically to have the child module name
+</p>
+<div class="zim-object">
+<pre><code class="xml">&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  
+  &lt;groupId&gt;com.blogspot.nodemorph&lt;/groupId&gt;
+  &lt;artifactId&gt;guess-the-number-game&lt;/artifactId&gt;
+  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;guess-the-number-game&lt;/name&gt;
+  
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+  
+  &lt;modules&gt;
+  	&lt;module&gt;core&lt;/module&gt;
+  &lt;/modules&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+<b>adding dependences to maven multi-module project</b><br>
+dependency can be added in parent project, child project can then inherite the dependency
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">&lt;dependencyManagement&gt;
+		&lt;dependencies&gt;
+			&lt;dependency&gt;
+				&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+				&lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+				&lt;version&gt;1.2.3&lt;/version&gt;
+			&lt;/dependency&gt;
+		&lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+<b>maven properties</b> can be used to specify the version number<br>
+maven properties are values place holder, there value are accessible from anywhere within  POM
 </p>
 
 <p>
-The above program should clear up the difference between method overloading (static binding) and method overriding (dynamic binding)<br>
-So, Method overloading in Java happens when a class has more than one method of the same name and their parameters are different. And creating a method in a child class which is already present in the parent class is known as method overriding. In java the child class method is followed by <span class="zim-tag">@Override</span> annotation.
+<img src="./spring-multi-module-project/pasted_image006.png">
 </p>
 
 <p>
-At this time let us also understand one more term called Up-casting. When we create a child class instance and store it in parent class reference  ,this is also known as up-casting or widening<br>
-Parent p = new Child();
+parent project dependencies
 </p>
 
-<p>
-<b>In up-casting the  reference can access the parent class members but it cannot access all the child class members. Instead reference p can access only the overridden methods.</b><br>
-Note : <i>Child class is a subset of parent class. Dog is-a animal. A subclass can access all public methods of super-class.</i>
-</p>
+<div class="zim-object">
+<pre><code class="xml">	&lt;dependencyManagement&gt;
+		&lt;dependencies&gt;
+
+			&lt;!-- logback --&gt;
+			&lt;dependency&gt;
+				&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+				&lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+				&lt;version&gt;${logback.version}&lt;/version&gt;
+			&lt;/dependency&gt;
+
+			&lt;!-- spring context --&gt;
+			&lt;dependency&gt;
+				&lt;groupId&gt;org.springframework&lt;/groupId&gt;
+				&lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+				&lt;version&gt;${spring-context.version}&lt;/version&gt;
+			&lt;/dependency&gt;
+
+		&lt;/dependencies&gt;
+	&lt;/dependencyManagement&gt;
+</code></pre>
+</div>
+
+<br>
 
 <p>
- Lets come back to <b>Static vs Dynamic binding</b><br>
-Association of method definition to the method call is known as binding. There are two types of binding: Static binding and dynamic binding<br>
-Static binding happens during the compile time, when the code is compiled by the compiler. The compiler is well aware which class is calling the methods.
+child project dependencies
 </p>
 
-<p>
-Note : <i>Binding of static (belongs to the class not any instance), private (hidden from outside access) and final (cannot change) methods is compile-time or static. because these methods cannot be overridden and the class type is determined at the compile time.</i>
-</p>
+<div class="zim-object">
+<pre><code class="xml">	&lt;dependencies&gt;
+
+		&lt;!-- logback --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+			&lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+		&lt;!-- spring context --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+	&lt;/dependencies&gt;
+</code></pre>
+</div>
+
+<br>
 
 <p>
-This brings us to one more important concept of <b>virtual functions</b> in programming. In many programming languages like C++ a function in parent class can only be overridden in child class only if it is declared as virtual with the help of virtual keyword.
+as seen the child project dependency does not have the version for the dependencies, as the version by default inherited from the parent
 </p>
 
-<p>
-Note : <i>In Java all the functions except static or private or final are virtual functions by default.</i>
-</p>
+<br>
 
-<p>
-In contrast, in C++ all the class member functions are non-virtual by default. They are made virtual by using the virtual keyword in the function signature.if the function of base class is made virtual then the function of Derived or Child class’s function with the same name can override the Base class’s function.<br>
-Since in Java all methods are virtual by default which means any method can be overridden when used in inheritance, unless that method is declared as final or static.
-</p>
-
-<p>
-This brings us to one more important concept called <b>VIrtual Method Table</b>.
-</p>
-
-<p>
-As per Wikipedia :<br>
-“A virtual method table (VMT), virtual function table, virtual call table, dispatch table, vtable, or vftable is a mechanism used in a programming language to support dynamic dispatch (or run-time method binding).The table are used at runtime to invoke the appropriate function implementations, because at compile time it may not yet be known if the base function is to be called or a derived one implemented by a class that inherits from the base class.”
-</p>
-
-<p>
-<b>So, it is clear that in method overriding, the method is bound to the objects on the runtime (as object creation ex : Temp temp = new obj1 happens at runtime) which is decided by the JVM. That’s why it is called Run time polymorphism.</b>
-</p>
-
-<p>
-Lets summarize the difference static and dynamic binding :<br>
-Static binding is a type of polymorphism that collects the information to call a method during the compile-time, it is faster.<br>
-Dynamic binding is a  type of polymorphism that collects the information to call a method at the runtime, it is comparatively slower.
-</p>
-
-<p>
-Let's end this article by again quoting Wikipedia definition of polymorphism <br>
-“In programming languages and type theory, polymorphism is the provision of a single interface to entities of different types or the use of a single symbol to represent multiple different types. The concept is borrowed from a principle in biology where an organism or species can have many different forms or stages.” 
-</p>
 
 	</div>
 
@@ -195,6 +247,30 @@ Let's end this article by again quoting Wikipedia definition of polymorphism <br
 
 	<div class='page-footer'>
 
+			<b>Attachments:</b>
+			<table>
+
+			<tr><td><a href='./spring-multi-module-project/pasted_image.png'>pasted_image.png</a></td><td>&nbsp;</td><td>310kb</td></tr>
+
+
+			<tr><td><a href='./spring-multi-module-project/pasted_image001.png'>pasted_image001.png</a></td><td>&nbsp;</td><td>164kb</td></tr>
+
+
+			<tr><td><a href='./spring-multi-module-project/pasted_image002.png'>pasted_image002.png</a></td><td>&nbsp;</td><td>68.6kb</td></tr>
+
+
+			<tr><td><a href='./spring-multi-module-project/pasted_image003.png'>pasted_image003.png</a></td><td>&nbsp;</td><td>53.4kb</td></tr>
+
+
+			<tr><td><a href='./spring-multi-module-project/pasted_image004.png'>pasted_image004.png</a></td><td>&nbsp;</td><td>74.4kb</td></tr>
+
+
+			<tr><td><a href='./spring-multi-module-project/pasted_image005.png'>pasted_image005.png</a></td><td>&nbsp;</td><td>43.7kb</td></tr>
+
+
+			<tr><td><a href='./spring-multi-module-project/pasted_image006.png'>pasted_image006.png</a></td><td>&nbsp;</td><td>52.2kb</td></tr>
+
+			</table>
 	</div>
 
 	

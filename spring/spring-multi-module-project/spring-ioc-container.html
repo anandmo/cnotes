@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>thymeleaf</title>
+	<title>spring-ioc-container</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -40,11 +40,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./spring/UML_Diagram.html'>Prev</a> ]
+	[ <a href='../spring-multi-module-project.html'>Prev</a> ]
 
-	[ <a href='./index.html'>Index</a> ]
+	[ <a href='../../index.html'>Index</a> ]
 
-	[ <span class='insen'>Next</span> ]
+	[ <a href='../UML_Diagram.html'>Next</a> ]
 </div>
 
 <hr />
@@ -53,117 +53,23 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>thymeleaf <a name='thymeleaf'></a></h1>
+	<h1>spring-ioc-container <a name='spring:spring-multi-module-project:spring-ioc-container'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Wednesday 23 March 2022
+Created Monday 28 March 2022
 </p>
 
 <p>
-thymeleaf is a template engine. <br>
-To add thymeleaf in spring project use the following dependencies 
-</p>
-
-<div class="zim-object">
-<pre><code class="xml">		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-</code></pre>
-</div>
-
-<br>
-
-<p>
-now running the spring-boot project gives the following warning 
+a container can be configured in many ways <br>
+but we can use xml (beans.xml) to configure it as well
 </p>
 
 <p>
-<i>Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)</i>
+by default spring returns singleton beans<br>
+singleton means a single instance of a bean shared across the application
 </p>
-
-<p>
-which simply means there were no template file found at the default template location
-</p>
-
-<p>
-add the template file home.html in <a href="file:///template" title="/template/" class="file">/template/</a> folder
-</p>
-
-<div class="zim-object">
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;!-- xmlns means xml namespace --&gt;
-&lt;html lang="en" xmlns:th="http://www.thymeleaf.org"&gt;
-
-&lt;head&gt;
-	&lt;title&gt;Demo Thymeleaf&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-	&lt;div align="center"&gt;
-		&lt;h1&gt; This is a demo of Thymleaf &lt;/h1&gt;
-		&lt;!-- th is thymeleaf prefix --&gt;
-		&lt;!-- text is use to set the text for the body of html tag --&gt;
-		&lt;!-- so Play is displayed instead of click here to google--&gt;
-		    &lt;!-- &lt;a th:text="Play" href="https://www.google.com"&gt;Click here to google&lt;/a&gt; --&gt;
-		&lt;!-- so below can be used instead --&gt;
-		&lt;a th:href="play" th:text="Play"&gt;&lt;/a&gt;
-	&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-</div>
-
-<br>
-
-<p>
-also we create ViewNames.java final class to store a string constant HOME = "home". later we can use this constant name to map it to the "/" root view using spring
-</p>
-
-<div class="zim-object">
-<pre><code class="java">package com.blogspot.nodemorph.thymeleafdemo.util;
-
-public final class ViewNames {
-	
-	//constant
-	public static final String HOME = "home";
-	
-	//private constructor to prevent class instantiation
-	private ViewNames( ) {
-		
-	}
-}
-</code></pre>
-</div>
-
-<br>
-
-<p>
-now create WebConfig.java class to set view name
-</p>
-
-<div class="zim-object">
-<pre><code class="java">package com.blogspot.nodemorph.thymeleafdemo.config;
-
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import com.blogspot.nodemorph.thymeleafdemo.util.ViewNames;
-
-@Configuration
-public class WebConfig implements WebMvcConfigurer {
-
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName(ViewNames.HOME);  // &lt;-- here we set the viewcontroller "/" to home.html
-		// registry.addViewController("home").setViewName(ViewNames.HOME); &lt;-- another example
-	}
-}
-</code></pre>
-</div>
 
 
 	</div>
