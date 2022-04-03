@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>HashMap</title>
+	<title>maven-multi-module-project</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -40,11 +40,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./generics.html'>Prev</a> ]
+	[ <a href='../spring.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./immutable_objects.html'>Next</a> ]
+	[ <a href='./maven-multi-module-project/spring-ioc-container.html'>Next</a> ]
 </div>
 
 <hr />
@@ -53,22 +53,224 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>HashMap <a name='java:HashMap'></a></h1>
+	<h1>maven-multi-module-project <a name='spring:maven-multi-module-project'></a></h1>
 	</div>
 
 	<div class='content'>
-	
+	<p>
+Created Friday 25 March 2022
+</p>
+
+<p>
+spliting the project in logical unit or modules for easy refactoring, reuse and development<br>
+one single maven command can build all modules and maven can take care of build order
+</p>
+
+<p>
+<img src="./maven-multi-module-project/pasted_image.png">
+</p>
+
+<p>
+<a href="./UML_Diagram.html" title="UML Diagram" class="page">UML Diagram</a> for the project
+</p>
+
+<p>
+<img src="./maven-multi-module-project/pasted_image001.png">
+</p>
+
+<p>
+create a multi-module maven project<br>
+create a sub project
+</p>
+
+<p>
+parent-project (also called pom project) CONTAINS child-project (modules)
+</p>
+
+<p>
+parent-project does not contain any code, since its just a project that specifies the modules<br>
+as a result we can delete the source directory in parent project since its not required<br>
+add <i>&lt;packaging&gt;pom&lt;/packaging&gt;</i> in pom.xml of this parent-project<br>
+pom is a container of sub modules<br>
+each sub-project is represented as a directory in the parent-project 
+</p>
+
+<p>
+<b>create sub-project/sub-module</b> <br>
+in eclipse :<br>
+   1. right click the parent project -&gt; new project<br>
+   <img src="./maven-multi-module-project/pasted_image004.png">    <br>
+   2. select project type as maven -&gt; maven module<br>
+   <img src="./maven-multi-module-project/pasted_image005.png"> <br>
+   3. enter the child project module name. Parent Module will be pre-selected
+</p>
+
+<p>
+   <img src="./maven-multi-module-project/pasted_image003.png">
+</p>
+
+<br>
+
+<p>
+here <i>core</i> is the name of the child project, by default child project is <i>jar</i>
+</p>
+<div class="zim-object">
+<pre><code class="xml">  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  
+    &lt;parent&gt;
+       &lt;groupId&gt;com.blogspot.nodemorph&lt;/groupId&gt;
+       &lt;artifactId&gt;guess-the-number-game&lt;/artifactId&gt;
+       &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    
+  &lt;artifactId&gt;core&lt;/artifactId&gt;
+  &lt;name&gt;core&lt;/name&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+similarly parent project pom.xml is updated automatically to have the child module name
+</p>
+<div class="zim-object">
+<pre><code class="xml">&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  
+  &lt;groupId&gt;com.blogspot.nodemorph&lt;/groupId&gt;
+  &lt;artifactId&gt;guess-the-number-game&lt;/artifactId&gt;
+  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;guess-the-number-game&lt;/name&gt;
+  
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+  
+  &lt;modules&gt;
+  	&lt;module&gt;core&lt;/module&gt;
+  &lt;/modules&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+<b>adding dependences to maven multi-module project</b><br>
+dependency can be added in parent project, child project can then inherite the dependency
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">&lt;dependencyManagement&gt;
+		&lt;dependencies&gt;
+			&lt;dependency&gt;
+				&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+				&lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+				&lt;version&gt;1.2.3&lt;/version&gt;
+			&lt;/dependency&gt;
+		&lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+<b>maven properties</b> can be used to specify the version number<br>
+maven properties are values place holder, there value are accessible from anywhere within  POM
+</p>
+
+<p>
+<img src="./maven-multi-module-project/pasted_image006.png">
+</p>
+
+<p>
+parent project dependencies
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">	&lt;dependencyManagement&gt;
+		&lt;dependencies&gt;
+
+			&lt;!-- logback --&gt;
+			&lt;dependency&gt;
+				&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+				&lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+				&lt;version&gt;${logback.version}&lt;/version&gt;
+			&lt;/dependency&gt;
+
+			&lt;!-- spring context --&gt;
+			&lt;dependency&gt;
+				&lt;groupId&gt;org.springframework&lt;/groupId&gt;
+				&lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+				&lt;version&gt;${spring-context.version}&lt;/version&gt;
+			&lt;/dependency&gt;
+
+		&lt;/dependencies&gt;
+	&lt;/dependencyManagement&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+child project dependencies
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">	&lt;dependencies&gt;
+
+		&lt;!-- logback --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+			&lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+		&lt;!-- spring context --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+	&lt;/dependencies&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+as seen the child project dependency does not have the version for the dependencies, as the version by default inherited from the parent
+</p>
+
+<br>
+
+
 	</div>
 
 	<br />
 
 	<div class='page-footer'>
-		<b>Backlinks:</b>
 
-		<a href='./collection.html'>java:collection</a>
+			<b>Attachments:</b>
+			<table>
 
-		<br /><br />
+			<tr><td><a href='./maven-multi-module-project/pasted_image.png'>pasted_image.png</a></td><td>&nbsp;</td><td>310kb</td></tr>
 
+
+			<tr><td><a href='./maven-multi-module-project/pasted_image001.png'>pasted_image001.png</a></td><td>&nbsp;</td><td>164kb</td></tr>
+
+
+			<tr><td><a href='./maven-multi-module-project/pasted_image002.png'>pasted_image002.png</a></td><td>&nbsp;</td><td>68.6kb</td></tr>
+
+
+			<tr><td><a href='./maven-multi-module-project/pasted_image003.png'>pasted_image003.png</a></td><td>&nbsp;</td><td>53.4kb</td></tr>
+
+
+			<tr><td><a href='./maven-multi-module-project/pasted_image004.png'>pasted_image004.png</a></td><td>&nbsp;</td><td>74.4kb</td></tr>
+
+
+			<tr><td><a href='./maven-multi-module-project/pasted_image005.png'>pasted_image005.png</a></td><td>&nbsp;</td><td>43.7kb</td></tr>
+
+
+			<tr><td><a href='./maven-multi-module-project/pasted_image006.png'>pasted_image006.png</a></td><td>&nbsp;</td><td>52.2kb</td></tr>
+
+			</table>
 	</div>
 
 	

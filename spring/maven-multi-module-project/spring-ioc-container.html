@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>HashMap</title>
+	<title>spring-ioc-container</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -40,11 +40,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./generics.html'>Prev</a> ]
+	[ <a href='../maven-multi-module-project.html'>Prev</a> ]
 
-	[ <a href='../index.html'>Index</a> ]
+	[ <a href='../../index.html'>Index</a> ]
 
-	[ <a href='./immutable_objects.html'>Next</a> ]
+	[ <a href='../UML_Diagram.html'>Next</a> ]
 </div>
 
 <hr />
@@ -53,22 +53,231 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>HashMap <a name='java:HashMap'></a></h1>
+	<h1>spring-ioc-container <a name='spring:maven-multi-module-project:spring-ioc-container'></a></h1>
 	</div>
 
 	<div class='content'>
-	
+	<p>
+Created Monday 28 March 2022
+</p>
+
+<p>
+a container can be configured in many ways <br>
+but we can use xml (beans.xml) to configure it as well
+</p>
+
+<p>
+by default spring returns singleton beans<br>
+singleton means a single instance of a bean shared across the application
+</p>
+
+<p>
+<b>Beans injection and creation using configuration files</b>
+</p>
+
+<p>
+inside beans.xml
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">	&lt;bean id="numberGenerator"
+		class="com.blogspot.nodemorph.NumberGeneratorImpl" /&gt;
+</code></pre>
+</div>
+
+<br>
+
+<div class="zim-object">
+<pre><code class="java">	public static void main(String[] args) {
+		// create context (container) 
+		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
+        // get NumberGenerator Bean using context
+		NumberGenerator numberGenerator = context.getBean("numberGenerator", NumberGeneratorImpl.class);
+    }
+</code></pre>
+</div>
+
+<br>
+<br>
+
+<p>
+<img src="./spring-ioc-container/pasted_image.png">
+</p>
+
+<br>
+
+
+<hr>
+
+<br>
+
+<p>
+<b>constructor based dependency injection</b>
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">	&lt;bean id="numberGenerator"
+		class="com.blogspot.nodemorph.NumberGeneratorImpl" /&gt;
+   
+    &lt;!-- use the singleton bean of NumberGenerator in GameImpl class constructor --&gt;
+	&lt;bean id="game" class="com.blogspot.nodemorph.GameImpl"&gt;
+		&lt;constructor-arg ref="numberGenerator" /&gt;
+	&lt;/bean&gt;
+</code></pre>
+</div>
+
+<br>
+
+<div class="zim-object">
+<pre><code class="java">	// no annotation
+	public GameImpl(NumberGenerator numberGenerator) {
+		// singleton bean of numberGenerator is injected
+		this.numberGenerator = numberGenerator;
+	}
+</code></pre>
+</div>
+
+<br>
+
+<p>
+<img src="./spring-ioc-container/pasted_image001.png">
+</p>
+
+
+<hr>
+
+<br>
+
+<p>
+<b>setter based dependency injection</b>
+</p>
+
+<p>
+create a setter method, note the refrence name in the setter parameter 
+</p>
+
+<div class="zim-object">
+<pre><code class="java">public void setNumberGen(NumberGenerator numberGen) {
+
+}
+</code></pre>
+</div>
+
+<br>
+
+<p>
+in beans.xml , use the same reference name
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">	&lt;bean id="numberGenerator"
+		class="com.blogspot.nodemorph.NumberGeneratorImpl" /&gt;
+   
+    &lt;!-- use the singleton bean of NumberGenerator in GameImpl class constructor --&gt;
+	&lt;bean id="game" class="com.blogspot.nodemorph.GameImpl"&gt;
+		&lt;property name = "numberGen" ref="numberGenerator" /&gt;
+	&lt;/bean&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+it is suggested to use contructor base dep injection. use setter based dependency injection for optional dependency.
+</p>
+
+<p>
+<img src="./spring-ioc-container/pasted_image003.png">
+</p>
+
+
+<hr>
+
+<br>
+
+<p>
+<b>setter vs constructor injection</b>
+</p>
+
+<p>
+Constructor injection helps in creating <b><a href="../../java/immutable_objects.html" title="java:immutable objects" class="page">java:immutable objects</a></b> because a constructor's signature is the only possible way to create objects. Once we create a bean, we cannot alter its dependencies anymore. 
+</p>
+
+<p>
+on the other hand in setter based dependency injection a setter method can be called many times. hence we can alter the dependency and re-injection of dependency can happen.
+</p>
+
+
+<hr>
+
+<br>
+
+<p>
+<b>dependency resolution process</b>
+</p>
+
+<p>
+<img src="./spring-ioc-container/pasted_image004.png">
+</p>
+
+
+<hr>
+
+<br>
+
+<p>
+<b>circular dependency</b>
+</p>
+
+<p>
+<img src="./spring-ioc-container/pasted_image005.png">
+</p>
+
+<p>
+spring throws BeanCurrentlyInCreationException  at run time if it detect circular dep
+</p>
+
+<p>
+circular dep can still be configured using setter injection
+</p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 	</div>
 
 	<br />
 
 	<div class='page-footer'>
-		<b>Backlinks:</b>
 
-		<a href='./collection.html'>java:collection</a>
+			<b>Attachments:</b>
+			<table>
 
-		<br /><br />
+			<tr><td><a href='./spring-ioc-container/pasted_image.png'>pasted_image.png</a></td><td>&nbsp;</td><td>64.6kb</td></tr>
 
+
+			<tr><td><a href='./spring-ioc-container/pasted_image001.png'>pasted_image001.png</a></td><td>&nbsp;</td><td>65.0kb</td></tr>
+
+
+			<tr><td><a href='./spring-ioc-container/pasted_image002.png'>pasted_image002.png</a></td><td>&nbsp;</td><td>122kb</td></tr>
+
+
+			<tr><td><a href='./spring-ioc-container/pasted_image003.png'>pasted_image003.png</a></td><td>&nbsp;</td><td>66.4kb</td></tr>
+
+
+			<tr><td><a href='./spring-ioc-container/pasted_image004.png'>pasted_image004.png</a></td><td>&nbsp;</td><td>21.3kb</td></tr>
+
+
+			<tr><td><a href='./spring-ioc-container/pasted_image005.png'>pasted_image005.png</a></td><td>&nbsp;</td><td>14.5kb</td></tr>
+
+			</table>
 	</div>
 
 	

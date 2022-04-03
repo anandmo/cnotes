@@ -63,15 +63,25 @@ Created Friday 25 March 2022
 
 <p>
 Initially was called LiveScript and was developed by Brenden Eich in 10 days<br>
-To standarize javascript ECMAScript was created<br>
-Just like in a movie there is script which actor follows similarly in the website elements act like actors and javascript tells them what to do<br>
-javascript is interpreted language unlike java which is compiled
+To standarderize javascript ECMAScript was created
 </p>
 
 <p>
-alert("Hello World");<br>
-alert is a function keyword
+Just like in a movie there is script which actor follows similarly in the website elements act like actors and javascript tells them what to do
 </p>
+
+<p>
+javascript is interpreted language unlike java which is compiled
+</p>
+
+<br>
+
+<p>
+<b>alert</b> is a function keyword<br>
+alert("Hello World");
+</p>
+
+<br>
 
 <p>
 <b>data types</b><br>
@@ -81,18 +91,18 @@ boolean : true  false
 </p>
 
 <p>
-typeof() fumction tells the datatype of a data<br>
+<b>typeof()</b> fumction tells the datatype of a data<br>
 typeof(123) -&gt; number
 </p>
 
 <p>
 prompt("How is the weather ?");<br>
-prompt is used to prompt a question to user in a browser
+<b>prompt</b> is used to prompt a question to user in a browser
 </p>
 
 <p>
 var myName = "Anand M";<br>
-var is a keyword to denote a variable<br>
+<b>var</b> is a keyword to denote a variable<br>
 myName is the name of the variable
 </p>
 
@@ -107,7 +117,7 @@ myName is the name of the variable
 </p>
 
 <p>
-string concatenation
+<b>string</b> concatenation
 </p>
 
 <p>
@@ -215,32 +225,32 @@ calling function
 <br>
 
 <p>
-parameterised functions
+<b>parameterised functions</b>
 </p>
 
-<p>
-function getMilk(count) {
-</p>
+<div class="zim-object">
+<pre><code class="js">function getMilk(count) {
 
-<p>
 }
-</p>
+</code></pre>
+</div>
+
+<br>
 
 <p>
-function with return statement
+<b>function with return statement</b>
 </p>
 
-<p>
-function getMilk() {
-</p>
+<div class="zim-object">
+<pre><code class="js">function getMilk() {
 
-<p>
-return milk;
-</p>
+    return milk;
 
-<p>
 }
-</p>
+</code></pre>
+</div>
+
+<br>
 
 
 <hr>
@@ -248,11 +258,11 @@ return milk;
 <br>
 
 <p>
-random number generation
+<b>random number generation</b>
 </p>
 
 <p>
-var n = Math.random();
+<i>var n = Math.random();</i>
 </p>
 
 <p>
@@ -267,6 +277,95 @@ note : Software-generated random numbers only are pseudorandom. Because the comp
 
 <hr>
 
+<br>
+
+<p>
+<b>conditional flow</b> 
+</p>
+
+<p>
+if-else
+</p>
+
+<p>
+comparartor <br>
+to check equality with datatype also matching use === <br>
+to check if not equal !== <br>
+to check equality without considering datatypes use ==
+</p>
+
+<p>
+combining comparator<br>
+&amp;&amp;, ||, !
+</p>
+
+
+<hr>
+
+<br>
+
+<p>
+<b>arrays in javascript</b>
+</p>
+
+<p>
+creating empty array<br>
+var eggArray = [];
+</p>
+
+<p>
+adding item to array<br>
+eggArray.push(item);
+</p>
+
+<p>
+remove last item from an array<br>
+eggArray.pop() 
+</p>
+
+<p>
+var eggArray = [1,2,3,4,5,6];<br>
+var egg = eggArray[1];
+</p>
+
+<p>
+length of array<br>
+egg.length;
+</p>
+
+<p>
+to find if an item is included in the array, return true or false<br>
+egg.includes(item);
+</p>
+
+<br>
+
+<p>
+the order of if-else statement matters remember the <b>fizzBuzz</b> problem 
+</p>
+
+<div class="zim-object">
+<pre><code class="js">var numArray = [];
+var num = 0;
+
+function fizzBuzz() {
+	num = num + 1;
+	//check the divisibility for both 5 &amp;&amp; 3 first
+    if ((num % 5 == 0) &amp;&amp; (num % 3 == 0)) {
+		numArray.push("fizzBuzz");
+	}  else if(num % 3 == 0) {
+		numArray.push("fizz");
+	} else if (num % 5 == 0) {
+		numArray.push("buzz");
+	} else  {
+		numArray.push(num);
+	}
+	console.log(numArray);
+}
+</code></pre>
+</div>
+
+<br>
 <br>
 <br>
 <br>

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>HashMap</title>
+	<title>immutable objects</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -40,11 +40,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./generics.html'>Prev</a> ]
+	[ <a href='./HashMap.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./immutable_objects.html'>Next</a> ]
+	[ <a href='./multithreading.html'>Next</a> ]
 </div>
 
 <hr />
@@ -53,11 +53,144 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>HashMap <a name='java:HashMap'></a></h1>
+	<h1>immutable objects <a name='java:immutable objects'></a></h1>
 	</div>
 
 	<div class='content'>
-	
+	<p>
+Created Sunday 03 April 2022
+</p>
+
+<p>
+An object is considered immutable if its state cannot change after it is constructed. Maximum reliance on immutable objects is widely accepted as a sound strategy for creating simple, reliable code.
+</p>
+
+<p>
+Immutable objects are particularly useful in concurrent applications. Since they cannot change state, they cannot be corrupted by thread interference or observed in an inconsistent state.
+</p>
+
+<p>
+Immutable class in java means that once an object is created, we cannot change its content. In Java, all the wrapper classes (like Integer, Boolean, Byte, Short) and String class is immutable. We can create our own immutable class as well. 
+</p>
+
+<p>
+Following are the requirements: 
+</p>
+
+<p>
+<ol type="1" start="1">
+<li>The class must be declared as final so that child classes can’t be created.</li>
+<li>Data members in the class must be declared private so that direct access is not allowed.</li>
+<li>Data members in the class must be declared as final so that we can’t change the value of it after object creation.</li>
+<li>A parameterized constructor should initialize all the fields performing a deep copy so that data members can’t be modified with an object reference.</li>
+<li>Deep Copy of objects should be performed in the getter methods to return a copy rather than returning the actual object reference)</li>
+</ol>
+</p>
+
+<div class="zim-object">
+<pre><code class="java">// Java Program to Create An Immutable Class
+
+// Importing required classes
+import java.util.HashMap;
+import java.util.Map;
+
+// Class 1
+// An immutable class
+final class Student {
+
+	// Member attributes of final class
+	private final String name;
+	private final int regNo;
+	private final Map&lt;String, String&gt; metadata;
+
+	// Constructor of immutable class
+	// Parameterized constructor
+	public Student(String name, int regNo,
+				Map&lt;String, String&gt; metadata)
+	{
+
+		// This keyword refers to current instance itself
+		this.name = name;
+		this.regNo = regNo;
+
+		// Creating Map object with reference to HashMap
+		// Declaring object of string type
+		Map&lt;String, String&gt; tempMap = new HashMap&lt;&gt;();
+
+		// Iterating using for-each loop
+		for (Map.Entry&lt;String, String&gt; entry :
+			metadata.entrySet()) {
+			tempMap.put(entry.getKey(), entry.getValue());
+		}
+
+		this.metadata = tempMap;
+	}
+
+	// Method 1
+	public String getName() { return name; }
+
+	// Method 2
+	public int getRegNo() { return regNo; }
+
+	// Note that there should not be any setters
+
+	// Method 3
+	// User -defined type
+	// To get meta data
+	public Map&lt;String, String&gt; getMetadata()
+	{
+
+		// Creating Map with HashMap reference
+		Map&lt;String, String&gt; tempMap = new HashMap&lt;&gt;();
+
+		for (Map.Entry&lt;String, String&gt; entry :
+			this.metadata.entrySet()) {
+			tempMap.put(entry.getKey(), entry.getValue());
+		}
+		return tempMap;
+	}
+}
+
+// Class 2
+// Main class
+class GFG {
+
+	// Main driver method
+	public static void main(String[] args)
+	{
+
+		// Creating Map object with reference to HashMap
+		Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
+
+		// Adding elements to Map object
+		// using put() method
+		map.put("1", "first");
+		map.put("2", "second");
+
+		Student s = new Student("ABC", 101, map);
+
+		// Calling the above methods 1,2,3 of class1
+		// inside main() method in class2 and
+		// executing the print statement over them
+		System.out.println(s.getName());
+		System.out.println(s.getRegNo());
+		System.out.println(s.getMetadata());
+
+		// Uncommenting below line causes error
+		// s.regNo = 102;
+
+		map.put("3", "third");
+		// Remains unchanged due to deep copy in constructor
+		System.out.println(s.getMetadata());
+		s.getMetadata().put("4", "fourth");
+		// Remains unchanged due to deep copy in getter
+		System.out.println(s.getMetadata());
+	}
+}
+
+</code></pre>
+</div>
+
 	</div>
 
 	<br />
@@ -65,7 +198,7 @@
 	<div class='page-footer'>
 		<b>Backlinks:</b>
 
-		<a href='./collection.html'>java:collection</a>
+		<a href='../spring/maven-multi-module-project/spring-ioc-container.html'>spring:maven-multi-module-project:spring-ioc-container</a>
 
 		<br /><br />
 
