@@ -242,9 +242,137 @@ circular dep can still be configured using setter injection
 </p>
 
 <br>
+
+
+<hr>
+
 <br>
+
+<p>
+<b>beans life cycle call-back</b>
+</p>
+
+<p>
+spring can call init and destroy methods during a bean life cycle<br>
+so when a bean is created init method can be called to initilize the values of beans
+</p>
+
+<p>
+<b>using xml</b> :<br>
+init-method = "methodName"<br>
+default-init-method
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">&lt;bean id="game" class="com.blogspot.nodemorph.GameImpl" init-method = "reset"&gt;
+	&lt;property name = "numberGen" ref="numberGenerator" /&gt;
+&lt;/bean&gt;
+</code></pre>
+</div>
+
 <br>
+
+<p>
+<b>using annotation  (prefered way):</b>
+</p>
+
+<p>
+Spring also supports JSR-250 based annotations which include <span class="zim-tag">@PostConstruct</span>, <span class="zim-tag">@PreDestroy</span> 
+</p>
+
+<p>
+<span class="zim-tag">@PostContruct</span>  annotation is used to annotate a method which needs to be called automatically with the Spring container creates the bean. This method can be used for initialisation of the bean.<br>
+ <span class="zim-tag">@PreDestroy</span>  method can be used to call methods when the bean is getting destroyed 
+</p>
+
+<p>
+add javax.annotation  api to project
+</p>
+<div class="zim-object">
+<pre><code class="xml">			&lt;!-- javax.annotation-api --&gt;
+			&lt;dependency&gt;
+				&lt;groupId&gt;javax.annotation&lt;/groupId&gt;
+				&lt;artifactId&gt;javax.annotation-api&lt;/artifactId&gt;
+				&lt;version&gt;${annotation.version}&lt;/version&gt;
+			&lt;/dependency&gt; 
+</code></pre>
+</div>
+
 <br>
+
+<p>
+to use the annotation , register CommonAnnotationBeanPostProcessor  in beans.xml
+</p>
+
+<div class="zim-object">
+<pre><code class="xml">&lt;bean class = "org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/&gt;
+</code></pre>
+</div>
+
+<br>
+
+<p>
+annotate the methods 
+</p>
+
+<div class="zim-object">
+<pre><code class="java">package com.tutorialspoint;
+import javax.annotation.*;
+
+public class HelloWorld {
+   private String message;
+
+   public void setMessage(String message){
+      this.message  = message;
+   }
+   public String getMessage(){
+      System.out.println("Your Message : " + message);
+      return message;
+   }
+   
+   @PostConstruct
+   public void init(){
+      System.out.println("Bean is going through init.");
+   }
+   
+   @PreDestroy
+   public void destroy(){
+      System.out.println("Bean will destroy now.");
+   }
+}
+</code></pre>
+</div>
+
+<br>
+
+
+<hr>
+
+<br>
+
+<p>
+<b>xml vs annotation based configuration</b>
+</p>
+
+<p>
+<b>xml</b> - seperation of concern , java code and configuration are seperated <br>
+-no type-safety, or compiler alert if typed wrong
+</p>
+
+<p>
+<b>annotation</b> - configuration is mixed with code<br>
+- more concise and simple to write<br>
+- type-safe and compiler alert
+</p>
+
+<p>
+combining good of both side using <span class="zim-tag">@Configuration</span>  annotated java configuration classes<br>
+type safe and seperation of concerns in seperate java files
+</p>
+
+
+<hr>
+
 <br>
 <br>
 <br>
